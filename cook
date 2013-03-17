@@ -1,6 +1,4 @@
 #!/bin/sh
 basedir=`dirname $0`
 
-ln -s "${basedir}/.tmux-powerlinerc" ~/.tmux-powerlinerc
-
 sudo chef-solo -c "${basedir}/solo.rb" -j "${basedir}/solo.json"
