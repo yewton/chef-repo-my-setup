@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: zsh
+# Cookbook Name:: tmux
 # Recipe:: default
 #
-# Copyright 2013, Example Com
+# Copyright 2013, yewton
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,3 +16,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+package "libevent" do
+  action :install
+end
+
+filename = "tmux-1.6-1.el6.rf.x86_64.rpm"
+file_checksum = "314d691a21b67b41d0244c4eced2788542aa8b1267893f58cfe9981e00614d9d"
+
+cookbook_file "/tmp/#{filename}" do
+  source "#{filename}"
+  checksum #{file_checksum}
+end
+
+package "tmux" do
+  action :install
+  provider Chef::Provider::Package::Rpm
+  source "/tmp/#{filename}"
+end

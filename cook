@@ -1,4 +1,4 @@
 #!/bin/sh
 basedir=`dirname $0`
 
-sudo chef-solo -c "${basedir}/solo.rb" -j "${basedir}/solo.json"
+sudo chef-solo -c "${basedir}/.chef/solo.rb" -j "${basedir}/.chef/chef.json"

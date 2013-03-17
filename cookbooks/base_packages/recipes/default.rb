@@ -16,22 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-%w[libevent].each do |package_name|
+%w[vim perl zsh].each do |package_name|
   package package_name do
     action :install
   end
-end
-
-filename = "tmux-1.6-1.el6.rf.x86_64.rpm"
-file_checksum = "314d691a21b67b41d0244c4eced2788542aa8b1267893f58cfe9981e00614d9d"
-
-cookbook_file "/tmp/#{filename}" do
-  source "#{filename}"
-  checksum #{file_checksum}
-end
-
-package "tmux" do
-  action :install
-  provider Chef::Provider::Package::Rpm
-  source "/tmp/#{filename}"
 end
